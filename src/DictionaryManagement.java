@@ -1,7 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,16 +16,12 @@ public class DictionaryManagement {
             Scanner scanner=new Scanner(System.in);
             work_target=scanner.nextLine();
             work_explain=scanner.nextLine();
-//            try {
-//                FileWriter w = new FileWriter("dictionary.txt");
-//                w.write("\n");
-//                w.write(work_target);
-//                w.write("\\t");
-//                w.write(work_explain);
-//            }
-//            catch(IOException e){
-//                System.out.println("Loi write");
-//            }
+            BufferedWriter writer = new BufferedWriter(new FileWriter("dictionary.txt", true));
+            writer.append(work_target);
+            writer.append("\t");
+            writer.append(work_explain);
+            writer.append("\n");
+            writer.close();
             Word neww=new Word(work_target,work_explain);
             Dictionary.addtoDic(neww);
         }
